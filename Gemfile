@@ -70,3 +70,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "bcrypt", "~> 3.1.7"
+gem 'will_paginate', '~> 3.3'
