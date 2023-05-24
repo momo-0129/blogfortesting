@@ -1,0 +1,26 @@
+<div>
+  <div>
+    <%= form_with(model: @user, local: true) do |f| %>
+      <div>
+        <%= f.label :username %>
+        <%= f.text_field :username %>
+      </div>
+      <div>
+        <%= f.label :email %>
+        <%= f.email_field :email, placeholder: "Enter your email adress" %>
+      </div>
+      <div>
+        <%= f.label :password %>
+          <%= f.password_field :password, placeholder: "choose a password" %>
+      </div>
+
+      <div>
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+    <div>
+     <%= link_to '[Cancel and return to articles listing]', articles_path %> 
+    </div>
+  </div>
+</div>

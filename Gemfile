@@ -74,3 +74,6 @@ group :test do
   
   gem "webdrivers"
 end
+
+gem "bcrypt", "~> 3.1.7"
+gem 'will_paginate', '~> 3.3'

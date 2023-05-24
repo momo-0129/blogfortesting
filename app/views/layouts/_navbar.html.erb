@@ -1,0 +1,9 @@
+<div>
+  <%= link_to "WRITETY", root_path %>
+  <%= link_to "wtitters", users_path %>
+    <% if logged_in? %>
+      <%= link_to "Create new article", new_article_path %></li>
+      welcome! !   <%= current_user.username %>
+      <%= button_to 'Logout', logout_path, method: :delete %>
+    <% end %>
+</div>
