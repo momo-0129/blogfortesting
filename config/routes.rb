@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  resources :comments
   root "pages#index"
   get "about", to: "pages#about"
 
-  resources :articles
+  resources :articles do
+    resources :comments, only: [:create]
+  end
 
   get 'signup', to: 'users#new'
   resources :users, except: [:new]

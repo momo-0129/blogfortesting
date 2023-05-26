@@ -1,0 +1,23 @@
+<form action="<%= article_comments_path(article) %>" method="post" >
+  <input type="hidden" name="authenticity_token">
+   
+  <textarea name="comment[text]" rows="6" ></textarea>
+   
+  <input type="submit" value="Submit">
+</form>
+
+<%
+=begin%>
+ <%= form_with url: article_comments_path(article), local: true, method: :post do %>
+  <div>
+    <%= label_tag "comment" %><br>
+    <%= text_area_tag "comment[text]" %><br>
+  </div>
+
+  <div>
+    <%= submit_tag "submit" %>
+  </div>
+<% end %> 
+<%
+=end
+%>

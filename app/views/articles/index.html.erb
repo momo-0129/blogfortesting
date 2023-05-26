@@ -2,7 +2,8 @@
 <ul>
   <% @articles.each do |article| %>
     <li>
-      <%= link_to article.title, article %>
+      <%= link_to article.title, article %> Create By 
+      <%= article.user.username %>
     </li>
   <% end %>
 </ul>
