@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Articles Controller test", type: :request do
   let(:article) { create(:article) }
+  let(:user) { create(:user) }
 
   describe "GET /index" do
     it 'assigns @articles' do
@@ -37,30 +38,35 @@ RSpec.describe "Articles Controller test", type: :request do
   end
 
   describe "POST #create" do
+    before do
+      user = create :user
+      visit "/login"
+      fill_in "Email", with: user.email
+      fill_in "Password", with: user.password
+      click_button "Log in"
+    end
     context "success" do
       it "create a new article" do
         article = create(:article)
-        visit new_article_path
-    
+        visit "/articles/new"
+
         fill_in "article_title", with: "Ruby on Rails"
         fill_in "article_description", with: "Text about Ruby on Rails"
     
         expect { click_button "Create Article" }.to change(Article, :count).by(1)
       end
-
-     
     end
 
     context "failure" do
       it "redirects to 'new_article_path' when create fails" do
+        visit "/articles/new"
         article = create(:article)
-        visit new_article_path
 
         fill_in "article_title", with: " "
         fill_in "article_description", with: " "
       
-       click_button "Create Article" 
-       expect(page).to have_content 'errors'
+        click_button "Create Article" 
+        expect(page).to have_content 'errors'
       end
     end
   end
